@@ -12,7 +12,12 @@
     -webkit-transition: width 0.8s ease-in-out;
             transition: width 0.8s ease-in-out;
   }
-  
+  .MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
+
+
+
   .progress4 {
     position: relative;
     width: 100%;

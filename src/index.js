@@ -4,30 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Upload from './components/upload';
-import { BrowserRouter as Router } from 'react-router-dom';
-import SideDrawer from './components/sideDrawer';
-import ResponsiveDrawer from './components/responsiveDrawer';
-import VideoQuality from './components/tools/videoQuality';
-import Camera from './components/database/camera';
-import EnhanceComponent from './components/tools/enhance';
-import LiveStream from './components/tools/liveStream';
-import AddCamera from './components/database/addCamera';
-import CamMap from './components/database/camMap';
+import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom';
+import UploadVideo from './components/database/uploadVideo';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     
     <App />
-    {/* <Upload/> */}
-    {/* <SideDrawer/>
-    <ResponsiveDrawer/> */}
-    {/* <VideoQuality/> */}
-    {/* <Camera/> */}
-    {/* <EnhanceComponent/> */}
-    {/* <LiveStream/> */}
-    {/* <AddCamera/> */}
-  
+
 
  
   </React.StrictMode>

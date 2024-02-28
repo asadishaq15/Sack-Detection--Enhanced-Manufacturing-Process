@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 // import { AuthContext } from "../context/auth-context";
 import { FlyToInterpolator } from 'deck.gl';
-
 import CamMap from "./camMap";
 import AddCamera from "./addCamera"
 import LoadingSpinner from "../tools/loadingSpinner";
@@ -36,6 +35,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import RoomIcon from "@material-ui/icons/Room";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
+import UploadVideo from "./uploadVideo";
 
 EventTarget.prototype.id = null;
 
@@ -43,6 +43,7 @@ EventTarget.prototype.id = null;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+
   },
   margin: {
     margin: theme.spacing(1),
@@ -118,6 +119,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     marginLeft: "10px",
   },
+  
 }));
 
 interface LocationItemProps {
@@ -824,73 +826,64 @@ const [camera, setCamera] = useState(null);
               </Alert>
             )} */}
             {locationData.length > 0 ? (
-  <div style={{ width: "100%" }}>
-    {camera && (
-      <Grid container>
-        <Grid style={{ padding: "10px" }} item xs={10}>
-          <Typography variant="h6" gutterBottom>
-            Camera Id #{camera._id.$oid}
-          </Typography>
-        </Grid>
-        <Grid style={{ padding: "10px" }} item xs={2}>
-          <Tooltip title={camera.formatted_address}>
-            <InfoOutlinedIcon fontSize="large" />
-          </Tooltip>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>Latitude</div>
-          <div className={classes.locationParams}>{camera.latitude}</div>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>Longitude</div>
-          <div className={classes.locationParams}>{camera.longitude}</div>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>Country</div>
-          <div className={classes.locationParams}>{camera.country}</div>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>State</div>
-          <div className={classes.locationParams}>{camera.state}</div>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>City</div>
-          <div className={classes.locationParams}>{camera.city}</div>
-        </Grid>
-        <Grid className={classes.locationAttributes} item xs={6}>
-          <div>Sublocality</div>
-          <div className={classes.locationParams}>{camera.sublocality}</div>
-        </Grid>
-      </Grid>
-    )}
-  </div>
-) : (
-  <div style={{ padding: "30px", textAlign: "center" }}>
-    No Camera in the database. Please add a camera to load details.
-  </div>
-)}
+              <div style={{ width: "100%" }}>
+                {camera && (
+                  <Grid container>
+                    <Grid style={{ padding: "10px" }} item xs={10}>
+                      <Typography variant="h6" gutterBottom>
+                        Camera Id #{camera._id.$oid}
+                      </Typography>
+                    </Grid>
+                    <Grid style={{ padding: "10px" }} item xs={2}>
+                      <Tooltip title={camera.formatted_address}>
+                        <InfoOutlinedIcon fontSize="large" />
+                      </Tooltip>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>Latitude</div>
+                      <div className={classes.locationParams}>{camera.latitude}</div>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>Longitude</div>
+                      <div className={classes.locationParams}>{camera.longitude}</div>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>Country</div>
+                      <div className={classes.locationParams}>{camera.country}</div>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>State</div>
+                      <div className={classes.locationParams}>{camera.state}</div>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>City</div>
+                      <div className={classes.locationParams}>{camera.city}</div>
+                    </Grid>
+                    <Grid className={classes.locationAttributes} item xs={6}>
+                      <div>Sublocality</div>
+                      <div className={classes.locationParams}>{camera.sublocality}</div>
+                    </Grid>
+                  </Grid>
+                )}
+              </div>
+                  ) : (
+                    <div style={{ padding: "30px", textAlign: "center" }}>
+                      No Camera in the database. Please add a camera to load details.
+                    </div>
+                  )}
 
-          </Grid>
-          <Grid style={{ paddingBottom: "20px" }} container>
-            <Grid id="video" className={classes.option} item xs={12} onClick={optionHandler}>
-              <VideoLibraryIcon />
-              <Typography className={classes.optionTitle}>
-                Search All Videos
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item md={6} xs={12}>
-          <div className={classes.mapContainer}>
-            <CamMap
-              width="100%"
-              height="80vh"
-              viewState={viewState}
-              onViewStateChange={handleChangeViewState}
-              libraries={locationData}
-            />
-          </div>
-        </Grid>
+               </Grid>
+                <Grid style={{ paddingBottom: "20px" }} container>
+                  <Grid id="video" className={classes.option} item xs={12} onClick={optionHandler}>
+                    <VideoLibraryIcon />
+                    <Typography className={classes.optionTitle}>
+                      Search All Videos
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            
+      <UploadVideo/>
       </Grid>
     </React.Fragment>
   );
